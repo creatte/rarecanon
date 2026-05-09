@@ -1,9 +1,9 @@
 -- ============================================================
 -- RareCanon 数据库初始化脚本
 -- 使用方法:
---   psql -U postgres -c "CREATE DATABASE rarecannon;"
---   psql -U postgres -d rarecannon -c "CREATE EXTENSION IF NOT EXISTS vector;"
---   psql -U postgres -d rarecannon -f init_db.sql
+--   psql -U postgres -c "CREATE DATABASE rarecanon;"
+--   psql -U postgres -d rarecanon -c "CREATE EXTENSION IF NOT EXISTS vector;"
+--   psql -U postgres -d rarecanon -f init_db.sql
 -- ============================================================
 
 CREATE EXTENSION IF NOT EXISTS vector;
@@ -85,9 +85,11 @@ CREATE TABLE IF NOT EXISTS document_chunks (
     id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     doc_id      UUID        NOT NULL REFERENCES documents(id) ON DELETE CASCADE,
     chunk_index INTEGER     NOT NULL,
+    chunk_title VARCHAR(512),
     content     TEXT        NOT NULL,
-    embedding   VECTOR(768),
+    embedding   VECTOR(1024),
     metadata    JSONB,
+    created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
     UNIQUE (doc_id, chunk_index)
 );
 

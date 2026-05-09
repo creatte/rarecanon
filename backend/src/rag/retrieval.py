@@ -4,7 +4,8 @@ from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..core.config import settings
-from ..core.database import Document
+from ..core.database import DocumentChunk
+from ..schemas import SearchResult
 from .embedding import embedding_service
 
 
@@ -13,7 +14,7 @@ async def hybrid_search(
     query: str,
     top_k: int | None = None,
     threshold: float | None = None,
-) -> list[dict]:
+) -> list[SearchResult]:
     """混合检索：dense + sparse → RRF 融合"""
     if top_k is None:
         top_k = settings.RAG_TOP_K
@@ -46,23 +47,22 @@ async def _dense_search(
 ) -> list[dict]:
     """pgvector 余弦相似度检索"""
     stmt = (
-        select(Document)
-        .filter(Document.embedding.isnot(None))
-        .order_by(Document.embedding.cosine_distance(query_vec.tolist()))
+        select(DocumentChunk)
+        .filter(DocumentChunk.embedding.isnot(None))
+        .order_by(DocumentChunk.embedding.cosine_distance(query_vec.tolist()))
         .limit(top_k)
     )
     result = await session.execute(stmt)
-    docs = result.scalars().all()
+    chunks = result.scalars().all()
 
     items = []
-    for doc in docs:
-        # 余弦距离 → 余弦相似度 = 1 - 距离
-        cos_dist = doc.embedding.cosine_distance(query_vec.tolist())
+    for c in chunks:
+        cos_dist = c.embedding.cosine_distance(query_vec.tolist())
         similarity = 1.0 - cos_dist
         if float(similarity) >= threshold:
             items.append({
-                "content": doc.content,
-                "title": doc.title or "",
+                "content": c.content,
+                "title": c.chunk_title or "",
                 "score": float(similarity),
             })
     return items

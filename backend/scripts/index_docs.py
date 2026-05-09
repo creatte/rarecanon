@@ -3,7 +3,8 @@ import asyncio
 import sys
 sys.path.insert(0, ".")
 
-from src.services.ingestion import ingest_directory, init_db
+from src.core.database import init_db
+from src.rag.ingestion import ingest_directory
 
 
 async def main():
