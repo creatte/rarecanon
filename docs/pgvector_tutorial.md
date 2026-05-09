@@ -836,17 +836,56 @@ def _hybrid_score(
 | 欧氏距离 | `<->` | `.l2_distance()` | 图像向量、需要敏感绝对差异 |
 | 负内积 | `<#>` | `.max_inner_product()` | 未归一化向量的相似度 |
 
-### 6.2 本项目选择余弦距离的原因
+### 6.2 本项目为什么选余弦距离，而不是 L2 或内积？
+
+**真正的原因有三个，按重要性排序：**
+
+**① 文本语义检索的行业标准就是余弦相似度**
+
+Embedding 模型（BGE-M3、text-embedding-3 等）训练时的损失函数用的就是余弦相似度。
+模型被训练成"语义相近的文本 → 余弦相似度接近 1"，所以检索时也该用余弦，匹配模型的训练目标。
+用 L2 或内积相当于换了一把尺子去量按余弦标定的东西，排序会错位。
+
+**② HNSW 索引必须和算子配套**
+
+```sql
+CREATE INDEX idx_chunk_embedding ON document_chunks
+    USING hnsw (embedding vector_cosine_ops);
+    --                       ^^^^^^^^^^^^^^^^
+```
+
+建索引时指定了 `vector_cosine_ops`，索引内部按余弦距离组织图结构。
+查询时如果用 `l2_distance` 算子，这个索引就用不上，变成全表扫描。
+所以**索引定了余弦，查询就得用余弦**，这是硬约束。
+
+**③ 对向量模长不敏感（保险兜底）**
+
+即使某个向量没做 L2 归一化，余弦只看方向、不看长度，结果是稳定的。
+L2 距离会被模长干扰（同方向但模长大的向量，L2 距离反而远），内积更敏感。
+
+---
+
+**那 L2 归一化的意义是什么？为什么提"点积 = 余弦相似度"？**
+
+L2 归一化不是"选余弦的原因"，而是选了余弦之后的**计算便利**：
 
 ```python
-# BGE-M3 输出的向量做了 L2 归一化（embedding_service.encode_dense 里 normalize_embeddings=True）
-# L2 归一化后：||v|| = 1（向量的模长为 1）
-# 此时：余弦相似度 = 点积 = v1 · v2
+# embedding.py: encode_dense 中 normalize_embeddings=True
+# 输出的每个向量模长 = 1
 
-# 在代码里（test_ingestion.py:132）可以看到直接用点积等效：
+# 数学上：|A| = |B| = 1 时
+余弦相似度 = (A·B) / (|A|×|B|) = (A·B) / 1 = A·B = 点积
+
+# 所以 pgvector 返回的 cosine_distance 可以这样理解：
+cosine_distance = 1 - 余弦相似度 = 1 - 点积
+
+# 测试代码直接用点积验证结果等价（test_ingestion.py:132）：
 sim = float(np.dot(emb, query_vec))
-# 等价于 1 - cosine_distance（因为 L2 归一化后余弦距离 = 1 - 点积）
+# 等价于 1.0 - cosine_distance，因为归一化后两者数学上完全等价
 ```
+
+归一化的真正作用：**把余弦相似度的除法（分母模长）消掉了**，让计算退化成纯点积，
+代码里用 `np.dot` 或直接用 `cosine_distance` 结果一致，只是方便打日志和设阈值。**不是决定选哪种距离的原因。**
 
 ### 6.3 如果在 Java 中要换成欧氏距离
 
