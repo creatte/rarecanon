@@ -35,14 +35,14 @@ class EmbeddingService:
             return
 
         model_dir = snapshot_download(settings.EMBEDDING_LOCAL_MODEL)
-        print(f"✅️模型已下载至: {model_dir}")
+        print(f"[OK] Model downloaded to: {model_dir}")
         self.model = SentenceTransformer(
             model_dir,
             # settings.EMBEDDING_LOCAL_MODEL,  # 默认 BAAI/bge-m3
             device=settings.EMBEDDING_DEVICE,  # 默认 cpu
             )
         self._loaded = True
-        print("✅️模型加载成功")
+        print("[OK] Model loaded successfully")
 
     @property
     def dim(self) -> int:

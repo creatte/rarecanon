@@ -21,6 +21,7 @@ arq>=0.26.0
 # ========== JWT 认证 ==========
 python-jose[cryptography]>=3.3.0
 passlib[bcrypt]>=1.7.4
+bcrypt==4.0.1                # 5.x 与 passlib 1.7.4 不兼容
 
 # ========== LLM & Agent 框架 ==========
 langgraph>=0.2.0

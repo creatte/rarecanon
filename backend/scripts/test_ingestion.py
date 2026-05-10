@@ -9,7 +9,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from src.core.config import settings
-from src.core.database import async_session, Document, DocumentChunk, init_db, engine
+from src.core.database import async_session, init_db, engine
+from src.models import Document, DocumentChunk
 from src.rag.ingestion import chunk_markdown
 from src.rag.embedding import embedding_service
 

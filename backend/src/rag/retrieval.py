@@ -4,7 +4,7 @@ from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..core.config import settings
-from ..core.database import DocumentChunk
+from ..models import DocumentChunk
 from ..schemas import SearchResult
 from .embedding import embedding_service
 

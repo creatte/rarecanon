@@ -4,7 +4,8 @@ import os
 from pathlib import Path
 
 from ..core.config import settings
-from ..core.database import async_session, Document, DocumentChunk, init_db
+from ..core.database import async_session, init_db
+from ..models import Document, DocumentChunk
 from ..schemas import Chunk
 from .embedding import embedding_service
 
@@ -105,11 +106,11 @@ async def ingest_file(file_path: str) -> int:
         return 0
 
     contents = [c["content"] for c in chunks]
-    print(f"    🔄 向量化中 ({len(contents)} 条)...")
+    print(f"    [ENC] Encoding ({len(contents)} chunks)...")
     dense_vecs = embedding_service.encode_dense(contents)
-    print(f"    ✅ 向量化完成 ({len(dense_vecs)} 条)")
+    print(f"    [OK] Encoding done ({len(dense_vecs)} vectors)")
 
-    print(f"    💾 写入数据库...")
+    print(f"    [DB] Writing to database...")
     async with async_session() as session:
         # 1. 创建文档元数据
         doc = Document(filename=source, title=source, status="completed")
@@ -139,7 +140,7 @@ async def ingest_directory(dir_path: str) -> int:
     )
 
     print(f"\n{'='*50}")
-    print(f"📂 找到 {len(md_files)} 个 md 文件")
+    print(f"[FIND] Found {len(md_files)} .md files")
     for f in md_files:
         print(f"   - {f}")
     print(f"{'='*50}\n")
@@ -148,12 +149,12 @@ async def ingest_directory(dir_path: str) -> int:
     total = 0
     for i, path in enumerate(md_files, 1):
         fname = os.path.basename(path)
-        print(f"[{i}/{len(md_files)}] 📄 处理: {fname}")
+        print(f"[{i}/{len(md_files)}] Processing: {fname}")
         n = await ingest_file(path)
         total += n
-        print(f"  ✅ {fname}: {n} chunks (累计: {total})\n")
+        print(f"  [OK] {fname}: {n} chunks (total: {total})\n")
 
     print(f"{'='*50}")
-    print(f"🎉 入库完成! 共 {len(md_files)} 文件, {total} chunks")
+    print(f"[DONE] Ingestion complete! {len(md_files)} files, {total} chunks")
     print(f"{'='*50}")
     return total

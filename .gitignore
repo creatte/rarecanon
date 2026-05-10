@@ -1,4 +1,43 @@
+# ── 环境变量（含密钥，绝对不能提交）──
 .env
+*.env
+!.env.example
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+*.so
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ── 虚拟环境 ──
+venv/
+.venv/
+env/
+ENV/
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS ──
+Thumbs.db
+.DS_Store
+
+# ── Claude Code ──
+.claude/
+
+# ── 项目特定 ──
 images/
 processed/
 mineru/

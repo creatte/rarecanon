@@ -42,6 +42,12 @@ class Settings(BaseSettings):
     LLM_TEMPERATURE: float = os.getenv("LLM_TEMPERATURE", 0.1)
     LLM_MAX_TOKENS: int = os.getenv("LLM_MAX_TOKENS", 4096)
 
+    # ── JWT ──
+    JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "change-me-in-production")
+    JWT_ALGORITHM: str = os.getenv("JWT_ALGORITHM", "HS256")
+    JWT_ACCESS_EXPIRE_MINUTES: int = os.getenv("JWT_ACCESS_EXPIRE_MINUTES", 30)
+    JWT_REFRESH_EXPIRE_DAYS: int = os.getenv("JWT_REFRESH_EXPIRE_DAYS", 7)
+
     # ── RAG ──
     RAG_TOP_K: int = os.getenv("RAG_TOP_K", 8)
     RAG_SIMILARITY_THRESHOLD: float = os.getenv("RAG_SIMILARITY_THRESHOLD", 0.7)
