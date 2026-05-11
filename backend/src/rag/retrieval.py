@@ -57,7 +57,9 @@ async def _dense_search(
 
     items = []
     for c in chunks:
-        cos_dist = c.embedding.cosine_distance(query_vec.tolist())
+        emb = np.asarray(c.embedding, dtype=np.float64)
+        # 向量已 L2 归一化，余弦相似度 = 点积，余弦距离 = 1 - 点积
+        cos_dist = 1.0 - float(np.dot(emb, query_vec))
         similarity = 1.0 - cos_dist
         if float(similarity) >= threshold:
             items.append({
@@ -81,12 +83,12 @@ def _hybrid_score(
         sparse_score = 0.0
         for token, weight in query_sparse.items():
             if token.lower() in content_lower:
-                sparse_score += weight
+                sparse_score += float(weight)
         # 归一化 sparse 分数
         if query_sparse:
-            sparse_score = sparse_score / sum(abs(w) for w in query_sparse.values())
-        # 加权融合
-        item["score"] = (1 - sparse_weight) * item["score"] + sparse_weight * sparse_score
+            sparse_score = sparse_score / sum(abs(float(w)) for w in query_sparse.values())
+        # 加权融合，确保结果为 Python float，避免 numpy 类型泄漏到 JSON 序列化
+        item["score"] = float((1 - sparse_weight) * item["score"] + sparse_weight * sparse_score)
 
     dense_items.sort(key=lambda x: x["score"], reverse=True)
     return dense_items[:top_k]

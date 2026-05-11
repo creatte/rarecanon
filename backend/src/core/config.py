@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     APP_NAME: str = os.getenv("APP_NAME", "RareCanon")
     APP_VERSION: str = os.getenv("APP_VERSION", "0.1.0")
     DEBUG: bool = os.getenv("DEBUG", False)
+    AGENT_DEBUG: bool = os.getenv("AGENT_DEBUG", False)  # 将中间步骤写入消息列表
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
 
     # ── 数据库 ──
