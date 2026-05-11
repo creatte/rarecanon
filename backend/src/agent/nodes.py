@@ -6,7 +6,7 @@ from langchain_core.messages import AIMessage, HumanMessage
 from ..core.config import settings
 from ..core.database import async_session
 from .state import DiagnosticState
-from .prompt import USER_INTENT, QUERY_REWRITE, DIFFERENTIAL_DIAGNOSIS, VERIFY_DIAGNOSIS, FINAL_RESPONSE, INQUIRY_RESPONSE
+from .prompt import USER_INTENT, QUERY_REWRITE, DIFFERENTIAL_DIAGNOSIS, VERIFY_DIAGNOSIS, FINAL_RESPONSE, INQUIRY_RESPONSE, VERIFY_INQUIRY
 from ..rag.retrieval import hybrid_search
 
 logger = logging.getLogger("agent")
@@ -160,6 +160,7 @@ def verify(state: DiagnosticState) -> dict:
         "verified": verified,
         "need_more_info": needMore,
         "feedback": feedback,
+        "iteration": state["iteration"] + 1 if not verified else state["iteration"],
     }
 
 
@@ -188,7 +189,38 @@ def reply_inquiry(state: DiagnosticState) -> dict:
         max_tokens=1024,
     ).content
     _debug_log("知识咨询回复", result)
+    return {"final_response": result}
+
+
+def verify_inquiry(state: DiagnosticState) -> dict:
+    """咨询验证节点：检查回复是否基于资料、是否答对问题"""
+    userMsg = _get_user_message(state)
+    docs = "\n---\n".join(state["retrieved_docs"]) if state["retrieved_docs"] else "无"
+    llm = _get_llm()
+    result = llm.invoke(
+        VERIFY_INQUIRY.format(
+            user_message=userMsg,
+            retrieved_docs=docs,
+            final_response=state["final_response"],
+        ),
+        max_tokens=128,
+    ).content
+
+    try:
+        raw = result.strip()
+        if raw.startswith("```"):
+            raw = raw.split("\n", 1)[1].rsplit("\n```", 1)[0]
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        logger.warning("咨询验证 JSON 解析失败，默认放行: %s", result[:200])
+        data = {"verified": True, "feedback": "解析失败，默认通过"}
+
+    verified = data.get("verified", False)
+    feedback = data.get("feedback", "")
+    _debug_log("咨询验证", f"verified={verified} feedback={feedback}")
     return {
-        "final_response": result,
-        "messages": [AIMessage(content=result)],
+        "verified": verified,
+        "feedback": feedback,
+        "messages": [AIMessage(content=state["final_response"])] if verified else [],
+        "iteration": state["iteration"] + 1 if not verified else state["iteration"],
     }
