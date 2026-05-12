@@ -43,6 +43,12 @@ class Settings(BaseSettings):
     LLM_TEMPERATURE: float = os.getenv("LLM_TEMPERATURE", 0.1)
     LLM_MAX_TOKENS: int = os.getenv("LLM_MAX_TOKENS", 4096)
 
+        # ── Redis ──
+    REDIS_HOST: str = os.getenv("REDIS_HOST", "localhost")
+    REDIS_PORT: int = os.getenv("REDIS_PORT", 6379)
+    REDIS_PASSWORD: str = os.getenv("REDIS_PASSWORD", "")
+    REDIS_DB: int = os.getenv("REDIS_DB", 0)
+
     # ── JWT ──
     JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "change-me-in-production")
     JWT_ALGORITHM: str = os.getenv("JWT_ALGORITHM", "HS256")
