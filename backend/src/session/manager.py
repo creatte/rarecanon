@@ -16,6 +16,18 @@ class SessionManager:
 
     # ── 会话 CRUD ──
 
+    async def ensure_exists(self, user_id: str, conv_id: str) -> None:
+        """会话不存在则自动创建"""
+        async with async_session() as s:
+            result = await s.execute(
+                select(Conversation.id).where(Conversation.id == conv_id)
+            )
+            if result.first() is None:
+                conv = Conversation(id=conv_id, user_id=user_id, title="新建会话")
+                s.add(conv)
+                await s.commit()
+                logger.debug("自动创建会话: %s", conv_id)
+
     async def create(self, user_id: str, title: str = "新建会话") -> Conversation:
         """创建新会话"""
         async with async_session() as s:
