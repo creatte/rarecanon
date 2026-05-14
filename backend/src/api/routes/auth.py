@@ -5,7 +5,7 @@ from sqlalchemy import select
 from ...core.database import async_session
 from ...core.security import hash_password, verify_password, create_access_token, create_refresh_token, decode_token
 from ...models import User
-from ...schemas import UserCreate, UserLogin, UserResponse, TokenResponse, RefreshRequest
+from ...schemas import UserCreate, UserLogin, UserResponse, TokenResponse, RefreshRequest, ChangePasswordBody, UpdateProfileBody
 from ..deps import get_current_user
 
 router = APIRouter()
@@ -101,4 +101,35 @@ async def refresh(body: RefreshRequest):
 @router.get("/me", response_model=UserResponse)
 async def me(user: User = Depends(get_current_user)):
     """当前用户信息：需要 Authorization: Bearer <access_token>"""
+    return user
+
+
+@router.put("/password")
+async def change_password(body: ChangePasswordBody, user: User = Depends(get_current_user)):
+    """修改当前用户密码"""
+    if not verify_password(body.old_password, user.password):
+        raise HTTPException(status_code=400, detail="原密码错误")
+    async with async_session() as s:
+        user.password = hash_password(body.new_password)
+        s.merge(user)
+        await s.commit()
+    return {"message": "密码已修改"}
+
+
+@router.put("/me", response_model=UserResponse)
+async def update_profile(body: UpdateProfileBody, user: User = Depends(get_current_user)):
+    """更新个人信息"""
+    async with async_session() as s:
+        user = await s.merge(user)
+        if body.username is not None:
+            user.username = body.username
+        if body.email is not None:
+            user.email = body.email
+        if body.hospital is not None:
+            user.hospital = body.hospital
+        if body.department is not None:
+            user.department = body.department
+        s.merge(user)
+        await s.commit()
+        await s.refresh(user)
     return user

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "D001",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患者男12岁，进行性双下肢肌无力2年，Gower征阳性，CK显著升高15000U/L，EMG示肌源性损害",
+    "expected_intent": "diagnose",
+    "expected_mention": ["Duchenne型肌营养不良", "DMD"]
+  },
+  {
+    "id": "D002",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患儿3岁，出生正常，1岁后发育倒退，语言能力丧失，出现刻板行为，可疑癫痫发作",
+    "expected_intent": "diagnose",
+    "expected_mention": ["Rett综合征"]
+  },
+  {
+    "id": "D003",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患者25岁女性，反复骨折3次，轻微外力即骨折，蓝色巩膜，牙本质发育不全，有家族史",
+    "expected_intent": "diagnose",
+    "expected_mention": ["成骨不全", "骨脆症"]
+  },
+  {
+    "id": "D004",
+    "type": "鉴别诊断",
+    "difficulty": "中等",
+    "user_message": "患者男15岁，进行性四肢近端肌无力3年，Gower征阳性，CK中度升高3000U/L，无腓肠肌假肥大",
+    "expected_intent": "diagnose",
+    "expected_mention": ["肢带型肌营养不良", "Becker型肌营养不良", "LGMD"]
+  },
+  {
+    "id": "D005",
+    "type": "鉴别诊断",
+    "difficulty": "中等",
+    "user_message": "患儿18个月，发育迟缓，肌张力低下，喂养困难，面容特殊，染色体核型正常",
+    "expected_intent": "diagnose",
+    "expected_mention": ["遗传代谢病", "先天性"]
+  },
+  {
+    "id": "D006",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "user_message": "患者反复出现不明原因发热，关节疼痛",
+    "expected_intent": "diagnose",
+    "expected_mention": ["信息不足", "需补充"]
+  },
+  {
+    "id": "D007",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "user_message": "新生儿筛查发现血氨基酸异常",
+    "expected_intent": "diagnose",
+    "expected_mention": ["需补充", "进一步"]
+  },
+  {
+    "id": "D008",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患者女28岁，反复发作性四肢扭转痉挛3年，紧张时加重，睡眠后消失，神经系统查体正常",
+    "expected_intent": "diagnose",
+    "expected_mention": ["肌张力不全", "DYT", "发作性运动"]
+  },
+  {
+    "id": "I001",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "user_message": "21-羟化酶缺乏症的诊断标准是什么",
+    "expected_intent": "inquiry",
+    "expected_mention": ["诊断标准", "21-羟化酶"]
+  },
+  {
+    "id": "I002",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "user_message": "Duchenne型肌营养不良有哪些临床表现",
+    "expected_intent": "inquiry",
+    "expected_mention": ["临床表现", "肌无力", "Gower"]
+  },
+  {
+    "id": "I003",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "user_message": "成骨不全症的遗传方式是什么",
+    "expected_intent": "inquiry",
+    "expected_mention": ["常染色体显性", "遗传"]
+  },
+  {
+    "id": "D009",
+    "type": "典型诊断",
+    "difficulty": "困难",
+    "user_message": "患者男8岁，自幼运动能力差，5岁后出现跟腱挛缩、腰椎前凸，双腓肠肌肥大，近期出现扩张性心肌病表现",
+    "expected_intent": "diagnose",
+    "expected_mention": ["Duchenne型肌营养不良", "DMD", "心肌病"]
+  },
+  {
+    "id": "D010",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "user_message": "患者女22岁，青春期后出现缓慢进展的双下肢无力，CK轻度升高800U/L，无腓肠肌肥大，有家族史（母亲有类似症状）",
+    "expected_intent": "diagnose",
+    "expected_mention": ["肢带型肌营养不良", "常染色体显性", "LGMD"]
+  },
+  {
+    "id": "D011",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "新生儿，皮肤色素沉着，呕吐，脱水，电解质紊乱：低钠高钾，17-羟孕酮显著升高",
+    "expected_intent": "diagnose",
+    "expected_mention": ["21-羟化酶缺乏症", "先天性肾上腺皮质增生"]
+  },
+  {
+    "id": "D012",
+    "type": "边界测试",
+    "difficulty": "困难",
+    "user_message": "患者45岁男性，近半年出现进行性肌无力，近端为主，CK正常，EMG呈神经源性损害",
+    "expected_intent": "diagnose",
+    "expected_mention": ["神经源性", "肌萎缩侧索硬化", "ALS", "运动神经元病"]
+  }
+]

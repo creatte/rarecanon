@@ -28,6 +28,11 @@ const router = createRouter({
           name: 'chat-detail',
           component: () => import('@/views/ChatView.vue'),
         },
+        {
+          path: 'archived',
+          name: 'archived',
+          component: () => import('@/views/ArchivedView.vue'),
+        },
       ],
     },
     {

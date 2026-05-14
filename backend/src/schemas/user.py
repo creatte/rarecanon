@@ -55,3 +55,15 @@ class TokenResponse(BaseModel):
 
 class RefreshRequest(BaseModel):
     refresh_token: str = Field(..., description="已获取的 refresh_token")
+
+
+class ChangePasswordBody(BaseModel):
+    old_password: str = Field(..., min_length=1)
+    new_password: str = Field(..., min_length=6)
+
+
+class UpdateProfileBody(BaseModel):
+    username: str | None = None
+    email: str | None = None
+    hospital: str | None = None
+    department: str | None = None

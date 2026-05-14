@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from ..core.config import settings
 from ..core.database import engine, init_db
+from .middleware import AuthMiddleware
 from .routes import api_router
 
 
@@ -41,6 +42,9 @@ app.add_middleware(
     allow_methods=["*"],             # GET / POST / PUT / DELETE / PATCH
     allow_headers=["*"],             # Authorization, Content-Type 等
 )
+
+# ── 全局认证兜底 ──
+app.add_middleware(AuthMiddleware)
 
 # ── 路由注册 ──
 app.include_router(api_router, prefix="/api/v1")

@@ -15,4 +15,9 @@ export interface RegisterParams {
 export const authApi = {
   login: (data: LoginParams) => api.post('/auth/login', data),
   register: (data: RegisterParams) => api.post('/auth/register', data),
+  getProfile: () => api.get('/auth/me'),
+  changePassword: (oldPassword: string, newPassword: string) =>
+    api.put('/auth/password', { old_password: oldPassword, new_password: newPassword }),
+  updateProfile: (data: { hospital?: string; department?: string }) =>
+    api.put('/auth/me', data),
 }

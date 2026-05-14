@@ -1,10 +1,10 @@
 """会话接口：创建 / 列表 / 详情 / 归档 / 删除"""
 from uuid import uuid4
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy import select, update
+from sqlalchemy import select, update, text
 
 from ...core.database import async_session
-from ...models import Conversation, Message, User
+from ...models import Conversation, Message, LongTermMemory, User
 from ...schemas import ConversationCreate, ConversationUpdate, ConversationResponse, ConversationListResponse
 from ...session.manager import SessionManager
 from ..deps import get_current_user
@@ -24,12 +24,12 @@ async def create_conv(body: ConversationCreate, user: User = Depends(get_current
 
 
 @router.get("", response_model=ConversationListResponse)
-async def list_convs(user: User = Depends(get_current_user)):
-    """获取当前用户的所有活跃会话"""
+async def list_convs(status: str = "active", user: User = Depends(get_current_user)):
+    """获取当前用户的会话列表（active / archived）"""
     async with async_session() as s:
         result = await s.execute(
             select(Conversation)
-            .where(Conversation.user_id == user.id, Conversation.status == "active")
+            .where(Conversation.user_id == user.id, Conversation.status == status)
             .order_by(Conversation.updated_at.desc())
         )
         items = list(result.scalars().all())
@@ -66,6 +66,22 @@ async def update_conv(conv_id: str, body: ConversationUpdate, user: User = Depen
             conv.status = body.status
         await s.commit()
         await s.refresh(conv)
+
+        # 归档时生成长期记忆；恢复时删除旧摘要
+        if body.status == "archived":
+            sm = SessionManager()
+            history = await sm.get_history(conv_id)
+            if history:
+                await sm._ltm.summarize_and_store(str(user.id), str(conv.id), history)
+            await sm._mem.clear(conv_id)
+        elif body.status == "active":
+            async with async_session() as s2:
+                await s2.execute(
+                    text("DELETE FROM long_term_memories WHERE metadata->>'conv_id' = :cid"),
+                    {"cid": str(conv.id)},
+                )
+                await s2.commit()
+
         return conv
 
 

@@ -1,6 +1,6 @@
 """请求/响应 Pydantic 模型 + 内部传递结构"""
 from .chunk import Chunk, SearchResult
-from .user import UserCreate, UserUpdate, UserLogin, UserResponse, TokenResponse, RefreshRequest
+from .user import UserCreate, UserUpdate, UserLogin, UserResponse, TokenResponse, RefreshRequest, ChangePasswordBody, UpdateProfileBody
 from .document import DocumentResponse, DocumentListResponse, ChunkResponse, ChunkListResponse
 from .conversation import (
     ConversationCreate, ConversationUpdate, ConversationResponse, ConversationListResponse,
@@ -13,7 +13,7 @@ __all__ = [
     # 内部传递
     "Chunk", "SearchResult",
     # 用户
-    "UserCreate", "UserUpdate", "UserLogin", "UserResponse", "TokenResponse", "RefreshRequest",
+    "UserCreate", "UserUpdate", "UserLogin", "UserResponse", "TokenResponse", "RefreshRequest", "ChangePasswordBody", "UpdateProfileBody",
     # 文档
     "DocumentResponse", "DocumentListResponse", "ChunkResponse", "ChunkListResponse",
     # 会话 + 消息

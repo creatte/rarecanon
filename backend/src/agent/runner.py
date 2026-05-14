@@ -18,23 +18,12 @@ class AgentRunner:
     def __init__(self):
         self._session = SessionManager()
 
-    async def run(self, user_id: str, conv_id: str, user_message: str) -> dict:
-        """
-        执行一次 Agent 推理。
-
-        Returns:
-            {"final_response": str, "intent": str, "verified": bool}
-        """
-        # 1. 确保会话存在（新会话自动创建）
+    async def _build_state(self, user_id: str, conv_id: str, user_message: str) -> dict:
+        """构建 Agent 输入状态（steps 1-5）"""
         await self._session.ensure_exists(user_id, conv_id)
-
-        # 2. 加载对话历史（短期记忆）
         history = await self._session.get_history(conv_id)
-
-        # 3. 召回长期记忆
         memories = await self._session._ltm.recall(user_id, user_message)
 
-        # 4. 拼接消息列表（旧在前，当前用户消息在最后）
         messages = []
         if memories:
             context = "【历史相关病例记忆】\n" + "\n".join(f"- {m}" for m in memories)
@@ -46,14 +35,14 @@ class AgentRunner:
                 messages.append(AIMessage(content=h["content"]))
         messages.append(HumanMessage(content=user_message))
 
-        # 5. 保存用户消息
         await self._session.add_message(conv_id, "user", user_message)
+        return {"messages": messages, "iteration": 0}
 
-        # 6. 运行 Agent
-        state = {"messages": messages, "iteration": 0}
+    async def run(self, user_id: str, conv_id: str, user_message: str) -> dict:
+        """非流式推理（兼容旧调用）"""
+        state = await self._build_state(user_id, conv_id, user_message)
         result = await graph.ainvoke(state)
 
-        # 7. 保存 AI 回复
         final = result.get("final_response", "")
         if final:
             await self._session.add_message(conv_id, "assistant", final)
@@ -64,3 +53,49 @@ class AgentRunner:
             "intent": result.get("intent", "inquiry"),
             "verified": result.get("verified", False),
         }
+
+    async def run_stream(self, user_id: str, conv_id: str, user_message: str):
+        """流式推理：边生成边 yield token"""
+        state = await self._build_state(user_id, conv_id, user_message)
+
+        final_text = ""
+        meta = {"intent": "inquiry", "verified": False}
+        streaming = False  # 只跟踪最终生成节点的 LLM 流
+
+        async for event in graph.astream_events(state, version="v2"):
+            kind = event["event"]
+            name = event.get("name", "")
+
+            # 进入最终生成节点 → 开始捕获 token
+            if kind == "on_chain_start" and name in ("generate_final", "reply_inquiry"):
+                streaming = True
+
+            # 离开最终生成节点 → 停止捕获
+            if kind == "on_chain_end" and name in ("generate_final", "reply_inquiry"):
+                streaming = False
+                output = event["data"].get("output", {})
+                if isinstance(output, dict):
+                    meta["verified"] = output.get("verified", meta["verified"])
+                    if output.get("final_response"):
+                        final_text = output["final_response"]
+
+            # LLM token 流（只在最终生成节点时才推送）
+            if kind == "on_chat_model_stream" and streaming:
+                chunk = event["data"]["chunk"]
+                if chunk.content:
+                    final_text += chunk.content
+                    yield {"type": "token", "content": chunk.content}
+
+        # 保存到数据库
+        if final_text:
+            await self._session.add_message(conv_id, "assistant", final_text)
+
+        # 从最终状态拿 intent
+        try:
+            final_state = await graph.aget_state()
+            if final_state.values:
+                meta["intent"] = final_state.values.get("intent", meta["intent"])
+        except Exception:
+            pass
+
+        yield {"type": "done", "intent": meta["intent"], "verified": meta["verified"]}

@@ -26,6 +26,8 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   (err) => {
+    // 用户主动取消的不弹错误
+    if (axios.isCancel(err)) return Promise.reject(err)
     if (err.response?.status === 401) {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
