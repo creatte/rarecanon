@@ -5,7 +5,10 @@
     "difficulty": "简单",
     "user_message": "患者男12岁，进行性双下肢肌无力2年，Gower征阳性，CK显著升高15000U/L，EMG示肌源性损害",
     "expected_intent": "diagnose",
-    "expected_mention": ["Duchenne型肌营养不良", "DMD"]
+    "expected_mention": [
+      "Duchenne型肌营养不良",
+      "DMD"
+    ]
   },
   {
     "id": "D002",
@@ -13,7 +16,9 @@
     "difficulty": "简单",
     "user_message": "患儿3岁，出生正常，1岁后发育倒退，语言能力丧失，出现刻板行为，可疑癫痫发作",
     "expected_intent": "diagnose",
-    "expected_mention": ["Rett综合征"]
+    "expected_mention": [
+      "Rett综合征"
+    ]
   },
   {
     "id": "D003",
@@ -21,7 +26,10 @@
     "difficulty": "简单",
     "user_message": "患者25岁女性，反复骨折3次，轻微外力即骨折，蓝色巩膜，牙本质发育不全，有家族史",
     "expected_intent": "diagnose",
-    "expected_mention": ["成骨不全", "骨脆症"]
+    "expected_mention": [
+      "成骨不全",
+      "骨脆症"
+    ]
   },
   {
     "id": "D004",
@@ -29,7 +37,11 @@
     "difficulty": "中等",
     "user_message": "患者男15岁，进行性四肢近端肌无力3年，Gower征阳性，CK中度升高3000U/L，无腓肠肌假肥大",
     "expected_intent": "diagnose",
-    "expected_mention": ["肢带型肌营养不良", "Becker型肌营养不良", "LGMD"]
+    "expected_mention": [
+      "肢带型肌营养不良",
+      "Becker型肌营养不良",
+      "LGMD"
+    ]
   },
   {
     "id": "D005",
@@ -37,7 +49,10 @@
     "difficulty": "中等",
     "user_message": "患儿18个月，发育迟缓，肌张力低下，喂养困难，面容特殊，染色体核型正常",
     "expected_intent": "diagnose",
-    "expected_mention": ["遗传代谢病", "先天性"]
+    "expected_mention": [
+      "遗传代谢病",
+      "先天性"
+    ]
   },
   {
     "id": "D006",
@@ -45,7 +60,10 @@
     "difficulty": "中等",
     "user_message": "患者反复出现不明原因发热，关节疼痛",
     "expected_intent": "diagnose",
-    "expected_mention": ["信息不足", "需补充"]
+    "expected_mention": [
+      "信息不足",
+      "需补充"
+    ]
   },
   {
     "id": "D007",
@@ -53,7 +71,10 @@
     "difficulty": "中等",
     "user_message": "新生儿筛查发现血氨基酸异常",
     "expected_intent": "diagnose",
-    "expected_mention": ["需补充", "进一步"]
+    "expected_mention": [
+      "需补充",
+      "进一步"
+    ]
   },
   {
     "id": "D008",
@@ -61,7 +82,11 @@
     "difficulty": "中等",
     "user_message": "患者女28岁，反复发作性四肢扭转痉挛3年，紧张时加重，睡眠后消失，神经系统查体正常",
     "expected_intent": "diagnose",
-    "expected_mention": ["肌张力不全", "DYT", "发作性运动"]
+    "expected_mention": [
+      "肌张力不全",
+      "DYT",
+      "发作性运动"
+    ]
   },
   {
     "id": "I001",
@@ -69,7 +94,10 @@
     "difficulty": "简单",
     "user_message": "21-羟化酶缺乏症的诊断标准是什么",
     "expected_intent": "inquiry",
-    "expected_mention": ["诊断标准", "21-羟化酶"]
+    "expected_mention": [
+      "诊断标准",
+      "21-羟化酶"
+    ]
   },
   {
     "id": "I002",
@@ -77,7 +105,11 @@
     "difficulty": "简单",
     "user_message": "Duchenne型肌营养不良有哪些临床表现",
     "expected_intent": "inquiry",
-    "expected_mention": ["临床表现", "肌无力", "Gower"]
+    "expected_mention": [
+      "临床表现",
+      "肌无力",
+      "Gower"
+    ]
   },
   {
     "id": "I003",
@@ -85,7 +117,10 @@
     "difficulty": "简单",
     "user_message": "成骨不全症的遗传方式是什么",
     "expected_intent": "inquiry",
-    "expected_mention": ["常染色体显性", "遗传"]
+    "expected_mention": [
+      "常染色体显性",
+      "遗传"
+    ]
   },
   {
     "id": "D009",
@@ -93,7 +128,11 @@
     "difficulty": "困难",
     "user_message": "患者男8岁，自幼运动能力差，5岁后出现跟腱挛缩、腰椎前凸，双腓肠肌肥大，近期出现扩张性心肌病表现",
     "expected_intent": "diagnose",
-    "expected_mention": ["Duchenne型肌营养不良", "DMD", "心肌病"]
+    "expected_mention": [
+      "Duchenne型肌营养不良",
+      "DMD",
+      "心肌病"
+    ]
   },
   {
     "id": "D010",
@@ -101,7 +140,11 @@
     "difficulty": "困难",
     "user_message": "患者女22岁，青春期后出现缓慢进展的双下肢无力，CK轻度升高800U/L，无腓肠肌肥大，有家族史（母亲有类似症状）",
     "expected_intent": "diagnose",
-    "expected_mention": ["肢带型肌营养不良", "常染色体显性", "LGMD"]
+    "expected_mention": [
+      "肢带型肌营养不良",
+      "常染色体显性",
+      "LGMD"
+    ]
   },
   {
     "id": "D011",
@@ -109,7 +152,10 @@
     "difficulty": "简单",
     "user_message": "新生儿，皮肤色素沉着，呕吐，脱水，电解质紊乱：低钠高钾，17-羟孕酮显著升高",
     "expected_intent": "diagnose",
-    "expected_mention": ["21-羟化酶缺乏症", "先天性肾上腺皮质增生"]
+    "expected_mention": [
+      "21-羟化酶缺乏症",
+      "先天性肾上腺皮质增生"
+    ]
   },
   {
     "id": "D012",
@@ -117,6 +163,421 @@
     "difficulty": "困难",
     "user_message": "患者45岁男性，近半年出现进行性肌无力，近端为主，CK正常，EMG呈神经源性损害",
     "expected_intent": "diagnose",
-    "expected_mention": ["神经源性", "肌萎缩侧索硬化", "ALS", "运动神经元病"]
+    "expected_mention": [
+      "神经源性",
+      "ALS",
+      "运动神经元病"
+    ]
+  },
+  {
+    "id": "D013",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患儿6个月，肌张力低下，舌体肥大，喂养困难，心脏彩超示肥厚性心肌病，α-葡萄糖苷酶活性显著降低",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "庞贝病",
+      "糖原累积病Ⅱ型"
+    ]
+  },
+  {
+    "id": "D014",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患者5岁男童，面容粗陋，角膜混浊，肝脾肿大，骨骼X线示多发骨发育不良，尿黏多糖筛查阳性",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "黏多糖贮积症"
+    ]
+  },
+  {
+    "id": "D015",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患者男7岁，出生后反复呼吸道感染，汗液中氯离子浓度>60mmol/L，胰腺外分泌功能不全",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "囊性纤维化"
+    ]
+  },
+  {
+    "id": "D016",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患儿9个月，皮肤白皙，毛发淡黄，鼠尿味，智力发育落后，血苯丙氨酸浓度>1200μmol/L",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "苯丙酮尿症",
+      "PKU"
+    ]
+  },
+  {
+    "id": "D017",
+    "type": "鉴别诊断",
+    "difficulty": "中等",
+    "user_message": "患者男35岁，进行性步态异常5年，双下肢远端肌萎缩呈'鹤腿'样，弓形足，神经传导速度显著减慢",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "腓骨肌萎缩症",
+      "Charcot-Marie-Tooth"
+    ]
+  },
+  {
+    "id": "D018",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患者女10岁，身材矮小，颈蹼，肘外翻，盾状胸，第二性征不发育，FSH显著升高",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "Turner综合征"
+    ]
+  },
+  {
+    "id": "D019",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患者男3岁，反复自残行为，咬伤口唇和手指，高尿酸血症，尿酸/肌酐比值>2.0",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "Lesch-Nyhan综合征",
+      "自毁容貌综合征"
+    ]
+  },
+  {
+    "id": "D020",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "user_message": "患者男20岁，进行性肢体远端肌无力伴肌强直，握拳后不能立即松开，面部肌萎缩呈斧头状，白内障，EMG见肌强直放电",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "强直性肌营养不良",
+      "肌强直"
+    ]
+  },
+  {
+    "id": "D021",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患儿2岁，毛发卷曲易断呈钢丝样，皮肤色素减退，反复低体温，血清铜和铜蓝蛋白显著降低",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "Menkes病",
+      "铜代谢异常"
+    ]
+  },
+  {
+    "id": "D022",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患者男16岁，角膜K-F环阳性，构音障碍，四肢肌张力增高伴震颤，血清铜蓝蛋白显著降低，24h尿铜升高",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "肝豆状核变性",
+      "Wilson病"
+    ]
+  },
+  {
+    "id": "D023",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "user_message": "患儿3岁，语言发育落后，仅会叫'爸爸'和'妈妈'，听力筛查正常",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "需补充",
+      "评估"
+    ]
+  },
+  {
+    "id": "D024",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "user_message": "患者男55岁，进行性四肢无力伴肌肉萎缩半年，可见肌束颤动，构音不清，吞咽困难，无感觉障碍，神经传导正常，EMG广泛神经源性损害",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "ALS",
+      "肌萎缩侧索硬化",
+      "运动神经元病"
+    ]
+  },
+  {
+    "id": "D025",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "新生儿，反复出血，脐带残端渗血不止，凝血因子Ⅷ活性<1%，APTT显著延长，PT正常",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "血友病A",
+      "凝血因子Ⅷ缺乏"
+    ]
+  },
+  {
+    "id": "D026",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患者女30岁，身材瘦高，手指细长呈蜘蛛指，晶状体半脱位，主动脉根部扩张，有家族史",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "马凡综合征"
+    ]
+  },
+  {
+    "id": "D027",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患儿出生后出现腹胀、呕吐、便秘，直肠活检示神经节细胞缺如",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "先天性巨结肠",
+      "Hirschsprung病"
+    ]
+  },
+  {
+    "id": "D028",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患者男12岁，身材矮小，四肢短小与躯干不成比例，前额突出，腰椎前凸，智力正常",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "软骨发育不全"
+    ]
+  },
+  {
+    "id": "D029",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "user_message": "患者女18岁，青春期延迟，原发性闭经，嗅觉缺失，LH、FSH、E2均低，MRI示嗅球未发育",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "Kallmann综合征",
+      "低促性腺激素性性腺功能减退"
+    ]
+  },
+  {
+    "id": "D030",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患者男4岁，自发性鼻衄反复发作，皮肤散在毛细血管扩张，多个部位可见动静脉畸形",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "遗传性出血性毛细血管扩张症",
+      "HHT"
+    ]
+  },
+  {
+    "id": "I004",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "user_message": "肝豆状核变性的诊断标准包括哪些",
+    "expected_intent": "inquiry",
+    "expected_mention": [
+      "铜蓝蛋白",
+      "K-F环",
+      "尿铜"
+    ]
+  },
+  {
+    "id": "I005",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "user_message": "苯丙酮尿症的饮食治疗方案是什么",
+    "expected_intent": "inquiry",
+    "expected_mention": [
+      "低苯丙氨酸",
+      "特殊奶粉"
+    ]
+  },
+  {
+    "id": "I006",
+    "type": "知识查询",
+    "difficulty": "中等",
+    "user_message": "血友病A和血友病B的鉴别要点",
+    "expected_intent": "inquiry",
+    "expected_mention": [
+      "凝血因子Ⅷ",
+      "凝血因子Ⅸ"
+    ]
+  },
+  {
+    "id": "D031",
+    "type": "边界测试",
+    "difficulty": "困难",
+    "user_message": "患者女35岁，反复流产3次，下肢深静脉血栓形成，抗心磷脂抗体持续阳性",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "抗磷脂综合征"
+    ]
+  },
+  {
+    "id": "D032",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患儿1岁，反复严重感染，淋巴细胞计数极低，免疫球蛋白全面降低，胸片示胸腺影缺如",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "重症联合免疫缺陷",
+      "SCID"
+    ]
+  },
+  {
+    "id": "D033",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "user_message": "患者反复出现口腔溃疡，每年发作>3次",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "需补充",
+      "鉴别"
+    ]
+  },
+  {
+    "id": "D034",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患者男6岁，眼球震颤，畏光，白化病样外观，皮肤毛发色素缺失，视力低下，血小板功能异常",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "Hermansky-Pudlak综合征"
+    ]
+  },
+  {
+    "id": "I007",
+    "type": "知识查询",
+    "difficulty": "中等",
+    "user_message": "庞贝病的酶替代治疗方案是什么",
+    "expected_intent": "inquiry",
+    "expected_mention": [
+      "酶替代",
+      "α-葡萄糖苷酶"
+    ]
+  },
+  {
+    "id": "D035",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患者男22岁，皮肤柔软过度伸展，关节活动度过大，轻微外伤后易形成宽大萎缩性瘢痕",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "Ehlers-Danlos综合征",
+      "EDS"
+    ]
+  },
+  {
+    "id": "D036",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "user_message": "患者女40岁，面部蝶形红斑，光敏感，关节痛，蛋白尿++，ANA阳性，抗dsDNA抗体阳性",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "系统性红斑狼疮",
+      "SLE"
+    ]
+  },
+  {
+    "id": "D037",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患儿3岁，反复骨折伴长骨弯曲畸形，骨密度Z值<-2.5，无成骨不全相关巩膜改变",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "特发性青少年骨质疏松"
+    ]
+  },
+  {
+    "id": "D038",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患者男10岁，面部多发皮脂腺瘤，癫痫发作，智力低下，头颅CT见室管膜下钙化结节",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "结节性硬化症"
+    ]
+  },
+  {
+    "id": "I008",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "user_message": "脊髓性肌萎缩症的临床分型有哪些",
+    "expected_intent": "inquiry",
+    "expected_mention": [
+      "SMA",
+      "分型",
+      "SMN1"
+    ]
+  },
+  {
+    "id": "D039",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "user_message": "新生儿表现为持续性低血糖，肝大，生长发育落后",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "需补充",
+      "糖原累积病"
+    ]
+  },
+  {
+    "id": "D040",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "user_message": "患者男28岁，反复发作性头痛伴局灶性神经功能障碍，MRI示多发白质病变，脑脊液寡克隆带阳性",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "多发性硬化"
+    ]
+  },
+  {
+    "id": "I009",
+    "type": "知识查询",
+    "difficulty": "中等",
+    "user_message": "马凡综合征的心血管并发症如何管理",
+    "expected_intent": "inquiry",
+    "expected_mention": [
+      "主动脉",
+      "β受体阻滞剂"
+    ]
+  },
+  {
+    "id": "I010",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "user_message": "Turner综合征患者需要使用生长激素治疗吗",
+    "expected_intent": "inquiry",
+    "expected_mention": [
+      "生长激素",
+      "身高"
+    ]
+  },
+  {
+    "id": "D041",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "user_message": "患者女14岁，反复腹痛伴肠套叠史，皮肤黏膜色素沉着，唇部散在黑斑",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "Peutz-Jeghers综合征"
+    ]
+  },
+  {
+    "id": "D042",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "user_message": "患儿出生后哭声低弱似猫叫，小头畸形，眼距宽，染色体核型5p-",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "猫叫综合征",
+      "5p-综合征"
+    ]
+  },
+  {
+    "id": "D043",
+    "type": "边界测试",
+    "difficulty": "困难",
+    "user_message": "患者男50岁，慢性咳嗽咳痰30年，反复气胸，胸部CT示双肺弥漫性薄壁囊腔，吸烟史20年",
+    "expected_intent": "diagnose",
+    "expected_mention": [
+      "肺淋巴管平滑肌瘤病",
+      "LAM"
+    ]
   }
 ]
+

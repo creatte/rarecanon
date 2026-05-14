@@ -1,0 +1,812 @@
+[
+  {
+    "id": "D001",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "Duchenne型肌营养不良",
+      "DMD"
+    ],
+    "expected": [
+      "Duchenne型肌营养不良",
+      "DMD"
+    ],
+    "time_s": 32.7
+  },
+  {
+    "id": "D002",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "Rett综合征"
+    ],
+    "expected": [
+      "Rett综合征"
+    ],
+    "time_s": 38.2
+  },
+  {
+    "id": "D003",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "成骨不全"
+    ],
+    "expected": [
+      "成骨不全",
+      "骨脆症"
+    ],
+    "time_s": 28.9
+  },
+  {
+    "id": "D004",
+    "type": "鉴别诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "肢带型肌营养不良",
+      "Becker型肌营养不良",
+      "LGMD"
+    ],
+    "expected": [
+      "肢带型肌营养不良",
+      "Becker型肌营养不良",
+      "LGMD"
+    ],
+    "time_s": 45.4
+  },
+  {
+    "id": "D005",
+    "type": "鉴别诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "先天性"
+    ],
+    "expected": [
+      "遗传代谢病",
+      "先天性"
+    ],
+    "time_s": 38.9
+  },
+  {
+    "id": "D006",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "diagnosis_pass": false,
+    "intent_pass": true,
+    "hits": [],
+    "expected": [
+      "信息不足",
+      "需补充"
+    ],
+    "time_s": 51.3
+  },
+  {
+    "id": "D007",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": false,
+    "hits": [
+      "进一步"
+    ],
+    "expected": [
+      "需补充",
+      "进一步"
+    ],
+    "time_s": 20.2
+  },
+  {
+    "id": "D008",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "DYT",
+      "发作性运动"
+    ],
+    "expected": [
+      "肌张力不全",
+      "DYT",
+      "发作性运动"
+    ],
+    "time_s": 39.1
+  },
+  {
+    "id": "I001",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "诊断标准",
+      "21-羟化酶"
+    ],
+    "expected": [
+      "诊断标准",
+      "21-羟化酶"
+    ],
+    "time_s": 9.8
+  },
+  {
+    "id": "I002",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "临床表现",
+      "肌无力",
+      "Gower"
+    ],
+    "expected": [
+      "临床表现",
+      "肌无力",
+      "Gower"
+    ],
+    "time_s": 5.5
+  },
+  {
+    "id": "I003",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "常染色体显性",
+      "遗传"
+    ],
+    "expected": [
+      "常染色体显性",
+      "遗传"
+    ],
+    "time_s": 4.0
+  },
+  {
+    "id": "D009",
+    "type": "典型诊断",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "Duchenne型肌营养不良",
+      "DMD",
+      "心肌病"
+    ],
+    "expected": [
+      "Duchenne型肌营养不良",
+      "DMD",
+      "心肌病"
+    ],
+    "time_s": 30.3
+  },
+  {
+    "id": "D010",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "肢带型肌营养不良",
+      "常染色体显性",
+      "LGMD"
+    ],
+    "expected": [
+      "肢带型肌营养不良",
+      "常染色体显性",
+      "LGMD"
+    ],
+    "time_s": 43.2
+  },
+  {
+    "id": "D011",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "21-羟化酶缺乏症",
+      "先天性肾上腺皮质增生"
+    ],
+    "expected": [
+      "21-羟化酶缺乏症",
+      "先天性肾上腺皮质增生"
+    ],
+    "time_s": 54.5
+  },
+  {
+    "id": "D012",
+    "type": "边界测试",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "神经源性",
+      "ALS",
+      "运动神经元病"
+    ],
+    "expected": [
+      "神经源性",
+      "ALS",
+      "运动神经元病"
+    ],
+    "time_s": 70.6
+  },
+  {
+    "id": "D013",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "庞贝病",
+      "糖原累积病Ⅱ型"
+    ],
+    "expected": [
+      "庞贝病",
+      "糖原累积病Ⅱ型"
+    ],
+    "time_s": 23.6
+  },
+  {
+    "id": "D014",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "黏多糖贮积症"
+    ],
+    "expected": [
+      "黏多糖贮积症"
+    ],
+    "time_s": 40.3
+  },
+  {
+    "id": "D015",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "囊性纤维化"
+    ],
+    "expected": [
+      "囊性纤维化"
+    ],
+    "time_s": 23.0
+  },
+  {
+    "id": "D016",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "苯丙酮尿症",
+      "PKU"
+    ],
+    "expected": [
+      "苯丙酮尿症",
+      "PKU"
+    ],
+    "time_s": 27.7
+  },
+  {
+    "id": "D017",
+    "type": "鉴别诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "腓骨肌萎缩症"
+    ],
+    "expected": [
+      "腓骨肌萎缩症",
+      "Charcot-Marie-Tooth"
+    ],
+    "time_s": 30.6
+  },
+  {
+    "id": "D018",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": false,
+    "intent_pass": true,
+    "hits": [],
+    "expected": [
+      "Turner综合征"
+    ],
+    "time_s": 27.2
+  },
+  {
+    "id": "D019",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "Lesch-Nyhan综合征"
+    ],
+    "expected": [
+      "Lesch-Nyhan综合征",
+      "自毁容貌综合征"
+    ],
+    "time_s": 36.2
+  },
+  {
+    "id": "D020",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "强直性肌营养不良",
+      "肌强直"
+    ],
+    "expected": [
+      "强直性肌营养不良",
+      "肌强直"
+    ],
+    "time_s": 31.8
+  },
+  {
+    "id": "D021",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "Menkes病",
+      "铜代谢异常"
+    ],
+    "expected": [
+      "Menkes病",
+      "铜代谢异常"
+    ],
+    "time_s": 56.3
+  },
+  {
+    "id": "D022",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "肝豆状核变性",
+      "Wilson病"
+    ],
+    "expected": [
+      "肝豆状核变性",
+      "Wilson病"
+    ],
+    "time_s": 55.9
+  },
+  {
+    "id": "D023",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "评估"
+    ],
+    "expected": [
+      "需补充",
+      "评估"
+    ],
+    "time_s": 44.0
+  },
+  {
+    "id": "D024",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "ALS",
+      "肌萎缩侧索硬化",
+      "运动神经元病"
+    ],
+    "expected": [
+      "ALS",
+      "肌萎缩侧索硬化",
+      "运动神经元病"
+    ],
+    "time_s": 46.3
+  },
+  {
+    "id": "D025",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "血友病A",
+      "凝血因子Ⅷ缺乏"
+    ],
+    "expected": [
+      "血友病A",
+      "凝血因子Ⅷ缺乏"
+    ],
+    "time_s": 28.5
+  },
+  {
+    "id": "D026",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "马凡综合征"
+    ],
+    "expected": [
+      "马凡综合征"
+    ],
+    "time_s": 66.5
+  },
+  {
+    "id": "D027",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": false,
+    "intent_pass": false,
+    "hits": [],
+    "expected": [
+      "先天性巨结肠",
+      "Hirschsprung病"
+    ],
+    "time_s": 8.6
+  },
+  {
+    "id": "D028",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "软骨发育不全"
+    ],
+    "expected": [
+      "软骨发育不全"
+    ],
+    "time_s": 32.4
+  },
+  {
+    "id": "D029",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "低促性腺激素性性腺功能减退"
+    ],
+    "expected": [
+      "Kallmann综合征",
+      "低促性腺激素性性腺功能减退"
+    ],
+    "time_s": 39.8
+  },
+  {
+    "id": "D030",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "遗传性出血性毛细血管扩张症",
+      "HHT"
+    ],
+    "expected": [
+      "遗传性出血性毛细血管扩张症",
+      "HHT"
+    ],
+    "time_s": 53.1
+  },
+  {
+    "id": "I004",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "铜蓝蛋白",
+      "K-F环",
+      "尿铜"
+    ],
+    "expected": [
+      "铜蓝蛋白",
+      "K-F环",
+      "尿铜"
+    ],
+    "time_s": 6.4
+  },
+  {
+    "id": "I005",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "低苯丙氨酸"
+    ],
+    "expected": [
+      "低苯丙氨酸",
+      "特殊奶粉"
+    ],
+    "time_s": 10.5
+  },
+  {
+    "id": "I006",
+    "type": "知识查询",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "凝血因子Ⅷ",
+      "凝血因子Ⅸ"
+    ],
+    "expected": [
+      "凝血因子Ⅷ",
+      "凝血因子Ⅸ"
+    ],
+    "time_s": 7.3
+  },
+  {
+    "id": "D031",
+    "type": "边界测试",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "抗磷脂综合征"
+    ],
+    "expected": [
+      "抗磷脂综合征"
+    ],
+    "time_s": 29.1
+  },
+  {
+    "id": "D032",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "重症联合免疫缺陷",
+      "SCID"
+    ],
+    "expected": [
+      "重症联合免疫缺陷",
+      "SCID"
+    ],
+    "time_s": 35.5
+  },
+  {
+    "id": "D033",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "需补充",
+      "鉴别"
+    ],
+    "expected": [
+      "需补充",
+      "鉴别"
+    ],
+    "time_s": 17.8
+  },
+  {
+    "id": "D034",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "Hermansky-Pudlak综合征"
+    ],
+    "expected": [
+      "Hermansky-Pudlak综合征"
+    ],
+    "time_s": 73.8
+  },
+  {
+    "id": "I007",
+    "type": "知识查询",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "酶替代"
+    ],
+    "expected": [
+      "酶替代",
+      "α-葡萄糖苷酶"
+    ],
+    "time_s": 3.7
+  },
+  {
+    "id": "D035",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "EDS"
+    ],
+    "expected": [
+      "Ehlers-Danlos综合征",
+      "EDS"
+    ],
+    "time_s": 58.5
+  },
+  {
+    "id": "D036",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "系统性红斑狼疮",
+      "SLE"
+    ],
+    "expected": [
+      "系统性红斑狼疮",
+      "SLE"
+    ],
+    "time_s": 69.1
+  },
+  {
+    "id": "D037",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": false,
+    "intent_pass": true,
+    "hits": [],
+    "expected": [
+      "特发性青少年骨质疏松"
+    ],
+    "time_s": 46.6
+  },
+  {
+    "id": "D038",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "结节性硬化症"
+    ],
+    "expected": [
+      "结节性硬化症"
+    ],
+    "time_s": 34.2
+  },
+  {
+    "id": "I008",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "SMA",
+      "分型"
+    ],
+    "expected": [
+      "SMA",
+      "分型",
+      "SMN1"
+    ],
+    "time_s": 10.9
+  },
+  {
+    "id": "D039",
+    "type": "信息不足",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "糖原累积病"
+    ],
+    "expected": [
+      "需补充",
+      "糖原累积病"
+    ],
+    "time_s": 34.7
+  },
+  {
+    "id": "D040",
+    "type": "鉴别诊断",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "多发性硬化"
+    ],
+    "expected": [
+      "多发性硬化"
+    ],
+    "time_s": 54.7
+  },
+  {
+    "id": "I009",
+    "type": "知识查询",
+    "difficulty": "中等",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "主动脉"
+    ],
+    "expected": [
+      "主动脉",
+      "β受体阻滞剂"
+    ],
+    "time_s": 9.6
+  },
+  {
+    "id": "I010",
+    "type": "知识查询",
+    "difficulty": "简单",
+    "diagnosis_pass": false,
+    "intent_pass": true,
+    "hits": [],
+    "expected": [
+      "生长激素",
+      "身高"
+    ],
+    "time_s": 6.0
+  },
+  {
+    "id": "D041",
+    "type": "典型诊断",
+    "difficulty": "中等",
+    "diagnosis_pass": false,
+    "intent_pass": true,
+    "hits": [],
+    "expected": [
+      "Peutz-Jeghers综合征"
+    ],
+    "time_s": 36.9
+  },
+  {
+    "id": "D042",
+    "type": "典型诊断",
+    "difficulty": "简单",
+    "diagnosis_pass": false,
+    "intent_pass": false,
+    "hits": [],
+    "expected": [
+      "猫叫综合征",
+      "5p-综合征"
+    ],
+    "time_s": 10.2
+  },
+  {
+    "id": "D043",
+    "type": "边界测试",
+    "difficulty": "困难",
+    "diagnosis_pass": true,
+    "intent_pass": true,
+    "hits": [
+      "肺淋巴管平滑肌瘤病",
+      "LAM"
+    ],
+    "expected": [
+      "肺淋巴管平滑肌瘤病",
+      "LAM"
+    ],
+    "time_s": 34.9
+  }
+]
